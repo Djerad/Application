@@ -23,6 +23,7 @@ import 'authentication/Signup3.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const Getstarted(),
+      theme: ThemeData(),
       routes: {
         //  "/": (context) => Auth(),
         "welcome": (context) => const Unboarding(),

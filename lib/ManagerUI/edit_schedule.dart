@@ -38,7 +38,7 @@ class _Edit_schedule_State extends State<Edit_schedule> {
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
                     padding: const EdgeInsets.only(right: 50),

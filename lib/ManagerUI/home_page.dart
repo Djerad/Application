@@ -22,6 +22,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
+    double screenlength = MediaQuery.of(context).size.height;
     var now = DateTime.now();
     var formatter = DateFormat('dd/ MMMM');
     String formattedDate = formatter.format(now);
@@ -650,7 +651,7 @@ class _HomeViewState extends State<HomeView> {
         ),
       ),
       drawer: SizedBox(
-        height: 720,
+        height: screenlength,
         width: 225,
         child: Drawer(
           child: Container(
@@ -663,6 +664,9 @@ class _HomeViewState extends State<HomeView> {
             // color: Color(0xFF232323),
             child: Column(
               children: [
+                SizedBox(
+                  height: 80,
+                ),
                 ListTile(
                   leading: Icon(
                     Icons.menu,
