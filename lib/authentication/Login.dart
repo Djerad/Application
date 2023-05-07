@@ -217,15 +217,15 @@ class _LoginState extends State<Login> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10)),
                         child: Image.asset(
-                          "images/10.jpg",
+                          "images/10.png",
                           fit: BoxFit.cover,
-                          width: 45,
-                          height: 45,
+                          width: 55,
+                          height: 55,
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: 50,
+                      width: 100,
                     ),
                     InkWell(
                       borderRadius: BorderRadius.circular(20),
