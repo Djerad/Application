@@ -300,7 +300,7 @@ class _SettingState extends State<Setting> {
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
+                              children: const [
                                 Text('Modify Help  ',
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 20)),
@@ -310,7 +310,7 @@ class _SettingState extends State<Setting> {
                           ),
                         ),
                       ]),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   Center(
@@ -331,7 +331,7 @@ class _SettingState extends State<Setting> {
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
+                          children: const [
                             Text(
                               'Modify About',
                               style:
@@ -350,7 +350,7 @@ class _SettingState extends State<Setting> {
           Padding(
             padding: const EdgeInsets.only(left: 30.0, top: 20),
             child: GestureDetector(
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_back_ios_new,
                 size: 37,
                 color: Color(0xFFFD372A),
@@ -376,21 +376,21 @@ class _SettingState extends State<Setting> {
                     Icons.menu,
                     color: Colors.white,
                   ),
-                  title: Text('Menu',
+                  title: const Text('Menu',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 ListTile(
-                  leading: Icon(
+                  leading: const Icon(
                     Icons.home,
                     color: Colors.white,
                   ),
-                  title: Text('Home',
+                  title: const Text('Home',
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.white,
@@ -403,11 +403,11 @@ class _SettingState extends State<Setting> {
                   },
                 ),
                 ListTile(
-                  leading: Icon(
+                  leading: const Icon(
                     Icons.settings,
                     color: Colors.white,
                   ),
-                  title: Text('Settings',
+                  title: const Text('Settings',
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.white,
@@ -420,11 +420,11 @@ class _SettingState extends State<Setting> {
                   },
                 ),
                 ListTile(
-                  leading: Icon(
+                  leading: const Icon(
                     Icons.contact_phone,
                     color: Colors.white,
                   ),
-                  title: Text('Contact Us',
+                  title: const Text('Contact Us',
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.white,
@@ -432,11 +432,11 @@ class _SettingState extends State<Setting> {
                   onTap: () {},
                 ),
                 ListTile(
-                  leading: Icon(
+                  leading: const Icon(
                     Icons.security,
                     color: Colors.white,
                   ),
-                  title: Text('Security',
+                  title: const Text('Security',
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.white,
@@ -444,11 +444,11 @@ class _SettingState extends State<Setting> {
                   onTap: () {},
                 ),
                 ListTile(
-                  leading: Icon(
+                  leading: const Icon(
                     Icons.share,
                     color: Colors.white,
                   ),
-                  title: Text('Share',
+                  title: const Text('Share',
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.white,
@@ -456,11 +456,11 @@ class _SettingState extends State<Setting> {
                   onTap: () {},
                 ),
                 ListTile(
-                  leading: Icon(
+                  leading: const Icon(
                     Icons.help,
                     color: Colors.white,
                   ),
-                  title: Text('Help',
+                  title: const Text('Help',
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.white,
@@ -468,11 +468,11 @@ class _SettingState extends State<Setting> {
                   onTap: () {},
                 ),
                 ListTile(
-                  leading: Icon(
+                  leading: const Icon(
                     Icons.info,
                     color: Colors.white,
                   ),
-                  title: Text('About',
+                  title: const Text('About',
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.white,

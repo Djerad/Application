@@ -1,6 +1,5 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:gymapp/widgetselectorsignup2.dart';
 
 class Signup2 extends StatefulWidget {
   const Signup2({super.key});
