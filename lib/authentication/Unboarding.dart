@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gymapp/Login.dart';
+import 'package:gymapp/authentication/Login.dart';
 
 import 'package:introduction_screen/introduction_screen.dart';
 

@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:gymapp/Auth.dart';
+import 'package:gymapp/authentication/Auth.dart';
 import 'package:gymapp/Chronometer.dart';
-import 'package:gymapp/DemandCoaching.dart';
-import 'package:gymapp/Getstarted.dart';
-import 'package:gymapp/Login.dart';
-import 'package:gymapp/OurStateAthlete.dart';
-import 'package:gymapp/OurStateShop.dart';
-import 'package:gymapp/OurstateAthlete.dart';
-import 'package:gymapp/ProfileCoach.dart';
-import 'package:gymapp/Signup1.dart';
+import 'package:gymapp/ManagerUI/DemandCoaching.dart';
+import 'package:gymapp/authentication/Getstarted.dart';
+import 'package:gymapp/authentication/Login.dart';
+
+import 'package:gymapp/ManagerUI/OurStateShop.dart';
+import 'package:gymapp/ManagerUI/OurstateAthlete.dart';
+import 'package:gymapp/ManagerUI/ProfileCoach.dart';
+import 'package:gymapp/authentication/Signup1.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:gymapp/Unboarding.dart';
-import 'package:gymapp/edit_our_offers.dart';
-import 'package:gymapp/edit_our_shop.dart';
-import 'package:gymapp/edit_schedule.dart';
-import 'package:gymapp/home_page.dart';
-import 'package:gymapp/listathletes.dart';
-import 'package:gymapp/profileathlete.dart';
-import 'Signup2.dart';
-import 'Signup3.dart';
+import 'package:gymapp/authentication/Unboarding.dart';
+import 'package:gymapp/ManagerUI/edit_our_offers.dart';
+import 'package:gymapp/ManagerUI/edit_our_shop.dart';
+import 'package:gymapp/ManagerUI/edit_schedule.dart';
+import 'package:gymapp/ManagerUI/home_page.dart';
+import 'package:gymapp/ManagerUI/listathletes.dart';
+import 'package:gymapp/ManagerUI/profileathlete.dart';
+import 'authentication/Signup2.dart';
+import 'authentication/Signup3.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

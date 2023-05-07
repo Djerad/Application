@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:gymapp/home_page.dart';
+import 'package:gymapp/ManagerUI/home_page.dart';
 
 class Listathletes extends StatefulWidget {
   const Listathletes({super.key});
 
   @override
   State<Listathletes> createState() => _ListathletesState();
+
 }
 
 class _ListathletesState extends State<Listathletes> {
@@ -18,6 +19,7 @@ class _ListathletesState extends State<Listathletes> {
         height: screenlength,
         width: screenwidth,
         decoration: BoxDecoration(
+           
             image: DecorationImage(
                 image: AssetImage("images/16.jpg"), fit: BoxFit.fill)),
         child: ListView(
