@@ -1,29 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:gymapp/Auth.dart';
-import 'package:gymapp/Chronometer.dart';
-import 'package:gymapp/DemandCoaching.dart';
-import 'package:gymapp/Getstarted.dart';
-import 'package:gymapp/Login.dart';
-import 'package:gymapp/OurStateAthlete.dart';
-import 'package:gymapp/OurStateShop.dart';
-import 'package:gymapp/OurstateAthlete.dart';
-import 'package:gymapp/ProfileCoach.dart';
-import 'package:gymapp/Signup1.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:gymapp/Unboarding.dart';
-import 'package:gymapp/edit_our_offers.dart';
-import 'package:gymapp/edit_our_shop.dart';
-import 'package:gymapp/edit_schedule.dart';
-import 'package:gymapp/home_page.dart';
-import 'package:gymapp/listathletes.dart';
-import 'package:gymapp/profileathlete.dart';
-import 'Signup2.dart';
-import 'Signup3.dart';
+import 'package:flutter/services.dart';
+import 'package:gymapp/consts/consts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Color(0xFFFF1E0F), // Set your desired color here
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -32,7 +19,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: const Getstarted(),
       routes: {

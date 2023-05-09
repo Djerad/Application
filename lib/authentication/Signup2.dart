@@ -1,6 +1,5 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter/material.dart';
-import 'package:gymapp/widgetselectorsignup2.dart';
+import 'package:flutter/services.dart';
+import 'package:gymapp/consts/consts.dart';
 
 class Signup2 extends StatefulWidget {
   const Signup2({super.key});
@@ -10,6 +9,13 @@ class Signup2 extends StatefulWidget {
 }
 
 class _Signup2State extends State<Signup2> {
+  var fullNameController = Get.arguments[0];
+  var usernameController = Get.arguments[1];
+  var phoneNumberController = Get.arguments[2];
+
+  var ageController = TextEditingController();
+  var weightController = TextEditingController();
+  var heightController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double screenwidth = MediaQuery.of(context).size.width;
@@ -40,66 +46,20 @@ class _Signup2State extends State<Signup2> {
             SizedBox(
               height: 50,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 25),
-              child: Container(
-                padding: EdgeInsets.only(
-                  left: 20,
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: TextFormField(
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    hintText: " Your Weight",
-                    hintStyle: TextStyle(
-                      color: Color(0xFF7A7A7A),
-                    ),
-                    border: InputBorder.none,
-                  ),
-                ),
-              ),
+            myTextformfield(
+              hint: "Your Age",
+              type: TextInputType.number,
+              controller: ageController,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 25),
-              child: Container(
-                padding: EdgeInsets.only(
-                  left: 20,
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: TextFormField(
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    hintText: " Your Weight",
-                    hintStyle: TextStyle(
-                      color: Color(0xFF7A7A7A),
-                    ),
-                    border: InputBorder.none,
-                  ),
-                ),
-              ),
+            myTextformfield(
+              hint: "Your Weight",
+              type: TextInputType.number,
+              controller: weightController,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 25),
-              child: Container(
-                padding: EdgeInsets.only(left: 20),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: TextFormField(
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    hintText: " Your Height",
-                    hintStyle: TextStyle(
-                      color: Color(0xFF7A7A7A),
-                    ),
-                    border: InputBorder.none,
-                  ),
-                ),
-              ),
+            myTextformfield(
+              hint: "Your Height",
+              type: TextInputType.number,
+              controller: heightController,
             ),
             SizedBox(
               height: 40,
@@ -119,7 +79,8 @@ class _Signup2State extends State<Signup2> {
                         borderRadius: BorderRadius.circular(15)),
                     child: InkWell(
                       onTap: () {
-                        Navigator.of(context).pushNamed("Signup1");
+                        //Navigator.of(context).pushNamed("Signup1");
+                        Get.back();
                       },
                       child: Text(
                         "Back",
@@ -140,7 +101,15 @@ class _Signup2State extends State<Signup2> {
                         borderRadius: BorderRadius.circular(15)),
                     child: InkWell(
                       onTap: () {
-                        Navigator.of(context).pushNamed("Signup3");
+                        //Navigator.of(context).pushNamed("Signup3");
+                        Get.to(() => Signup3(), arguments: [
+                          fullNameController,
+                          usernameController,
+                          phoneNumberController,
+                          ageController,
+                          weightController,
+                          heightController,
+                        ]);
                       },
                       child: Text(
                         "NEXT",

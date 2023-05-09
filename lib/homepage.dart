@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+import 'package:gymapp/consts/consts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,7 +10,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +24,7 @@ class _HomePageState extends State<HomePage> {
           ),
           SizedBox(height: 10),
           Text(
-            user.email!,
+            "email",
             style: TextStyle(fontSize: 20),
           ),
           SizedBox(height: 50),
@@ -37,9 +35,7 @@ class _HomePageState extends State<HomePage> {
             ),
             height: 45,
             child: MaterialButton(
-              onPressed: (() {
-                FirebaseAuth.instance.signOut();
-              }),
+              onPressed: (() {}),
               child: Text(
                 'Sign out',
                 style: TextStyle(

@@ -1,5 +1,5 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter/material.dart';
+import 'package:gymapp/consts/consts.dart';
 
 class selector extends StatefulWidget {
   const selector({super.key});

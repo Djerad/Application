@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:gymapp/consts/consts.dart';
 
 class Signup1 extends StatefulWidget {
   const Signup1({super.key});
@@ -8,6 +8,9 @@ class Signup1 extends StatefulWidget {
 }
 
 class _Signup1State extends State<Signup1> {
+  var fullNameController = TextEditingController();
+  var usernameController = TextEditingController();
+  var phoneNumberController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double screenwidth = MediaQuery.of(context).size.width;
@@ -37,61 +40,40 @@ class _Signup1State extends State<Signup1> {
             SizedBox(
               height: 100,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 25),
-              child: Container(
-                padding: EdgeInsets.only(left: 15),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    hintText: "Full Name",
-                    hintStyle: TextStyle(
-                      color: Color(0xFF7A7A7A),
-                    ),
-                    border: InputBorder.none,
-                  ),
-                ),
-              ),
+            myTextformfield(
+              hint: "Full Name",
+              type: TextInputType.name,
+              controller: fullNameController,
+            ),
+            myTextformfield(
+              hint: "User Name",
+              type: TextInputType.text,
+              controller: usernameController,
+            ),
+            myTextformfield(
+              hint: "Phone Number",
+              type: TextInputType.phone,
+              controller: phoneNumberController,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 25),
-              child: Container(
-                padding: EdgeInsets.only(
-                  left: 15,
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    hintText: "User Name",
-                    hintStyle: TextStyle(
-                      color: Color(0xFF7A7A7A),
-                    ),
-                    border: InputBorder.none,
+              padding: const EdgeInsets.only(left: 48),
+              child: Row(
+                children: [
+                  Text(
+                    "You already have an acccount ? ",
+                    style: TextStyle(fontSize: 17, color: Colors.white),
                   ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 25),
-              child: Container(
-                padding: EdgeInsets.only(left: 15),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: TextFormField(
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    hintText: "Phone Number",
-                    hintStyle: TextStyle(
-                      color: Color(0xFF7A7A7A),
+                  InkWell(
+                    onTap: () {
+                      //Navigator.of(context).pushNamed("Signup1");
+                      Get.back();
+                    },
+                    child: Text(
+                      "Log In",
+                      style: TextStyle(color: Color(0xFFFF1E0F), fontSize: 17),
                     ),
-                    border: InputBorder.none,
-                  ),
-                ),
+                  )
+                ],
               ),
             ),
             SizedBox(
@@ -111,7 +93,15 @@ class _Signup1State extends State<Signup1> {
                         borderRadius: BorderRadius.circular(15)),
                     child: InkWell(
                       onTap: () {
-                        Navigator.of(context).pushNamed("Signup2");
+                        //Navigator.of(context).pushNamed("Signup2");
+                        Get.to(
+                          () => Signup2(),
+                          arguments: [
+                            fullNameController,
+                            usernameController,
+                            phoneNumberController
+                          ],
+                        );
                       },
                       child: Text(
                         "NEXT",

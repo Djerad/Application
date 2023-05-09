@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:custom_check_box/custom_check_box.dart';
-import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:gymapp/homepage.dart';
+import 'package:gymapp/consts/consts.dart';
+import 'package:gymapp/controlllers/auth_controller.dart';
 
 class Signup3 extends StatefulWidget {
   const Signup3({super.key});
@@ -14,35 +13,18 @@ class Signup3 extends StatefulWidget {
 
 class _Signup3State extends State<Signup3> {
   bool shouldCheck = false;
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
+  var controller = Get.put(AuthController());
+  //text controllers
+  var fullNameController = Get.arguments[0];
+  var usernameController = Get.arguments[1];
+  var phoneNumberController = Get.arguments[2];
+  var ageController = Get.arguments[3];
+  var weightController = Get.arguments[4];
+  var heightController = Get.arguments[5];
 
-  Future signUp() async {
-    if (passwordConfirmed()) {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim());
-      Navigator.of(context).pushNamed('/');
-    }
-  }
-
-  bool passwordConfirmed() {
-    if (_passwordController.text.trim() ==
-        _confirmPasswordController.text.trim()) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-    _confirmPasswordController.dispose();
-  }
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+  var confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -77,66 +59,22 @@ class _Signup3State extends State<Signup3> {
             SizedBox(
               height: 100,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-              child: Container(
-                padding: EdgeInsets.only(left: 15),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: TextFormField(
-                  controller: _emailController,
-                  decoration: InputDecoration(
-                    hintText: "Email",
-                    hintStyle: TextStyle(
-                      color: Color(0xFF7A7A7A),
-                    ),
-                    border: InputBorder.none,
-                  ),
-                ),
-              ),
+            myTextformfield(
+              hint: "Email",
+              type: TextInputType.emailAddress,
+              controller: emailController,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-              child: Container(
-                padding: EdgeInsets.only(
-                  left: 15,
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: TextFormField(
-                  obscureText: true,
-                  controller: _passwordController,
-                  decoration: InputDecoration(
-                    hintText: "Password",
-                    hintStyle: TextStyle(
-                      color: Color(0xFF7A7A7A),
-                    ),
-                    border: InputBorder.none,
-                  ),
-                ),
-              ),
+            myTextformfield(
+              hint: "Password",
+              obsecure: true,
+              type: TextInputType.visiblePassword,
+              controller: passwordController,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-              child: Container(
-                padding: EdgeInsets.only(left: 15),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: TextFormField(
-                  controller: _confirmPasswordController,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: " Confirm Password",
-                    hintStyle: TextStyle(
-                      color: Color(0xFF7A7A7A),
-                    ),
-                    border: InputBorder.none,
-                  ),
-                ),
-              ),
+            myTextformfield(
+              hint: "Confirm Password",
+              obsecure: true,
+              type: TextInputType.visiblePassword,
+              controller: confirmPasswordController,
             ),
             Row(
               children: [
@@ -203,19 +141,52 @@ class _Signup3State extends State<Signup3> {
                 height: 50,
                 width: 100,
                 child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25)),
-                        backgroundColor: Color(0xFFFF1E0F)),
-                    onPressed: () {
-                      Navigator.of(context).pushNamed("HomePage");
-                      signUp();
-                    },
-                    child: Text(
-                      "Sign Up",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
-                    )),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    backgroundColor: shouldCheck == true
+                        ? Color(0xFFFF1E0F)
+                        : Color.fromARGB(255, 255, 184, 179),
+                  ),
+                  onPressed: () async {
+                    if (shouldCheck != false) {
+                      try {
+                        await controller
+                            .signupMethod(
+                          context: context,
+                          email: emailController.text,
+                          password: passwordController.text,
+                        )
+                            .then((value) {
+                          return controller.storeUserData(
+                            email: emailController.text,
+                            password: passwordController.text,
+                            fullName: fullNameController.text,
+                            username: usernameController.text,
+                            phoneNumber: passwordController.text,
+                            age: ageController.text,
+                            weight: weightController.text,
+                            height: heightController.text,
+                          );
+                        }).then((value) {
+                          VxToast.show(context, msg: "Logged in successfully");
+                          Get.offAll(() => HomeScreen());
+                        });
+                      } catch (e) {
+                        auth.signOut();
+                        VxToast.show(context, msg: e.toString());
+                      }
+                    }
+                  },
+                  child: Text(
+                    "Sign Up",
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
               ),
             ),
             SizedBox(
@@ -233,7 +204,9 @@ class _Signup3State extends State<Signup3> {
                     borderRadius: BorderRadius.circular(15)),
                 child: InkWell(
                   onTap: () {
-                    Navigator.of(context).pushNamed("Signup2");
+                    //Navigator.of(context).pushNamed("Signup2");
+                    //Get.to(() => Signup2());
+                    Get.back();
                   },
                   child: Text(
                     "Back",

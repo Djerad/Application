@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:gymapp/Login.dart';
-
+import 'package:gymapp/consts/consts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class Unboarding extends StatefulWidget {
@@ -14,8 +12,9 @@ class _UnboardingState extends State<Unboarding> {
   bool firstOpen = true;
 
   _onIntroEnd(context) async {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => const Login()));
+    // Navigator.of(context)
+    //    .push(MaterialPageRoute(builder: (context) => const Login()));
+    Get.to(() => Login());
   }
 
   _buildFullScreenImage() {
@@ -136,18 +135,18 @@ class _UnboardingState extends State<Unboarding> {
                               image: AssetImage("images/12.jpg"),
                               fit: BoxFit.cover)),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
-                    Text(
+                    const Text(
                       "Get Your Personnel Coach ",
                       style: TextStyle(color: Colors.white, fontSize: 23),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Center(
                         child: Text(
                           "Train under the supervision of the best trainersin the gym or even online.  ",
@@ -256,7 +255,8 @@ class _UnboardingState extends State<Unboarding> {
                                       borderRadius: BorderRadius.circular(25)),
                                   backgroundColor: Color(0xFFFF1E0F)),
                               onPressed: () {
-                                Navigator.of(context).pushNamed("Login");
+                                //Navigator.of(context).pushNamed("Login");
+                                Get.to(() => Signup1());
                               },
                               child: Text(
                                 "Go To Create Account ",

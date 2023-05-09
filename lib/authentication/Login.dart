@@ -1,8 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:gymapp/consts/consts.dart';
+import 'package:gymapp/controlllers/auth_controller.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -12,24 +11,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-
-  Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim());
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(AuthController());
     double screenwidth = MediaQuery.of(context).size.width;
     double screenlength = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -64,43 +48,19 @@ class _LoginState extends State<Login> {
                   height: 80,
                 ),
                 //Email field
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                  child: Container(
-                    padding: EdgeInsets.only(left: 15),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: TextFormField(
-                      controller: _emailController,
-                      decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.email),
-                        hintText: "Email",
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
+                myTextformfield(
+                  hint: "Email",
+                  icon: Icon(Icons.email),
+                  type: TextInputType.emailAddress,
+                  controller: controller.emailController,
                 ),
-                //password field
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                  child: Container(
-                    padding: EdgeInsets.only(left: 15),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: TextFormField(
-                      controller: _passwordController,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.password_sharp),
-                        hintText: "Password",
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
+                //Password field
+                myTextformfield(
+                  hint: "Password",
+                  obsecure: true,
+                  icon: Icon(Icons.password_sharp),
+                  type: TextInputType.visiblePassword,
+                  controller: controller.passwordController,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -137,8 +97,16 @@ class _LoginState extends State<Login> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25)),
                             backgroundColor: Color(0xFFFF1E0F)),
-                        onPressed: () {
-                          signIn();
+                        onPressed: () async {
+                          await controller
+                              .loginMethod(context: context)
+                              .then((value) {
+                            if (value != null) {
+                              VxToast.show(context,
+                                  msg: "Logged in Successfully");
+                              Get.offAll(() => const HomeScreen());
+                            }
+                          });
                         },
                         child: Text(
                           "Login",
@@ -162,7 +130,8 @@ class _LoginState extends State<Login> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).pushNamed("Signup1");
+                          //Navigator.of(context).pushNamed("Signup1");
+                          Get.to(() => Signup1());
                         },
                         child: Text(
                           "Sign Up",
@@ -202,48 +171,22 @@ class _LoginState extends State<Login> {
                     )
                   ],
                 ),
-                SizedBox(
-                  height: 6,
-                ),
+                10.heightBox,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    InkWell(
-                      borderRadius: BorderRadius.circular(20),
-                      onTap: () {
-                        print("test Facebook button");
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Image.asset(
-                          "images/10.jpg",
-                          fit: BoxFit.cover,
-                          width: 45,
-                          height: 45,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 50,
-                    ),
-                    InkWell(
-                      borderRadius: BorderRadius.circular(20),
-                      onTap: () {
-                        print("test google button");
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Image.asset(
-                          "images/3.png",
-                          fit: BoxFit.cover,
-                          width: 45,
-                          height: 45,
-                        ),
-                      ),
-                    ),
-                  ],
+                  children: List.generate(
+                      2,
+                      (index) => Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              radius: 25,
+                              child: Image.asset(
+                                socialIconList[index],
+                                width: 30,
+                              ),
+                            ),
+                          )),
                 ),
               ],
             ),

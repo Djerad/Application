@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:gymapp/consts/consts.dart';
 
 import 'package:neon_circular_timer/neon_circular_timer.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gymapp/DemandCoaching.dart';
-import 'package:gymapp/edit_our_offers.dart';
-import 'package:gymapp/edit_our_shop.dart';
-import 'package:gymapp/edit_schedule.dart';
-import 'package:gymapp/listathletes.dart';
-import 'package:gymapp/setting.dart';
+import 'package:gymapp/ManagerUI/DemandCoaching.dart';
+import 'package:gymapp/ManagerUI/edit_our_offers.dart';
+import 'package:gymapp/ManagerUI/edit_our_shop.dart';
+import 'package:gymapp/ManagerUI/edit_schedule.dart';
+import 'package:gymapp/ManagerUI/listathletes.dart';
+import 'package:gymapp/ManagerUI/setting.dart';
 import 'package:intl/intl.dart';
 
 import 'about.dart';

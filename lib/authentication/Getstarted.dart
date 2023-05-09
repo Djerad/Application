@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
+
+import 'package:gymapp/consts/consts.dart';
 
 class Getstarted extends StatefulWidget {
   const Getstarted({super.key});
@@ -53,7 +55,8 @@ class _GetstartedState extends State<Getstarted> {
                           borderRadius: BorderRadius.circular(15)),
                       backgroundColor: Color(0xFFFF1E0F)),
                   onPressed: () {
-                    Navigator.of(context).pushNamed("welcome");
+                    //Navigator.of(context).pushNamed("welcome");
+                    Get.to(() => Unboarding());
                   },
                   child: Text(
                     "Get Start",

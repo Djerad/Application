@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gymapp/home_page.dart';
+import 'package:gymapp/ManagerUI/home_page.dart';
 
 class Listathletes extends StatefulWidget {
   const Listathletes({super.key});
