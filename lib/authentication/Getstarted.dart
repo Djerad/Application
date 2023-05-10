@@ -13,7 +13,7 @@ class _GetstartedState extends State<Getstarted> {
     double screenwidth = MediaQuery.of(context).size.width;
     double screenlength = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Color(0xFF393939),
+      backgroundColor: const Color(0xFF393939),
       body: ListView(
         children: [
           SizedBox(

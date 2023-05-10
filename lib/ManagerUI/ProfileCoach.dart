@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-class ProfileCoach extends StatefulWidget {
-  const ProfileCoach({super.key});
+void main() => runApp(ProfileCoach());
 
-  @override
-  State<ProfileCoach> createState() => _ProfileCoachState();
-}
-
-class _ProfileCoachState extends State<ProfileCoach> {
+class ProfileCoach extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenwidth = MediaQuery.of(context).size.width;

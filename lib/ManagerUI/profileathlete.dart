@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
 
+void main() => runApp(Profileathlete());
 
-
-class Profileathlete extends StatefulWidget {
-  const Profileathlete({super.key});
-
-  @override
-  State<Profileathlete> createState() => _ProfileathleteState();
-}
-
-class _ProfileathleteState extends State<Profileathlete> {
+class Profileathlete extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
